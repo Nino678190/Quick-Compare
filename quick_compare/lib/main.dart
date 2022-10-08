@@ -73,7 +73,9 @@ class _QuickCompareState extends State<QuickCompare> {
               width: MediaQuery.of(context).size.width,
               child: InkWell(
                 onTap: (){
-                  isEditRooms=true;
+                  setState(() {
+                    isEditRooms=true;
+                  });
                 },
                 child: Text("Räume bearbeiten",style: TextStyle(fontSize: 20, color: Colors.red),),
               ),
