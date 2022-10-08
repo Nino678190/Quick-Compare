@@ -34,6 +34,7 @@ class _QuickCompareState extends State<QuickCompare> {
   var steckdosenWerteProzent = [
     []
   ];
+  bool isEditRooms=false;
 
   TextEditingController steckcontroller = TextEditingController();
 
@@ -72,7 +73,7 @@ class _QuickCompareState extends State<QuickCompare> {
               width: MediaQuery.of(context).size.width,
               child: InkWell(
                 onTap: (){
-
+                  isEditRooms=true;
                 },
                 child: Text("Räume bearbeiten",style: TextStyle(fontSize: 20, color: Colors.red),),
               ),
@@ -119,7 +120,8 @@ class _QuickCompareState extends State<QuickCompare> {
       appBar: AppBar(title: Text("Quick Compare")),
       body: navigationindex == 2
           ? Einstellungen()
-          : Column(children: <Widget>[
+          : isEditRooms?EditRooms()
+          :Column(children: <Widget>[
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
