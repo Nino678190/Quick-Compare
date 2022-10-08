@@ -26,13 +26,13 @@ class QuickCompare extends StatefulWidget {
 
 class _QuickCompareState extends State<QuickCompare> {
   int navigationindex = 1;
-  var raume = ["Schlafzimmer"];
-  String raumwahl = "Schlafzimmer";
+  var raume = ["Deafault"];
+  String raumwahl = "Deafault";
   var steckdosen = [
-    ["Steckdose 1"]
+    []
   ];
   var steckdosenWerteProzent = [
-    [25]
+    []
   ];
 
   TextEditingController steckcontroller = TextEditingController();
@@ -56,7 +56,16 @@ class _QuickCompareState extends State<QuickCompare> {
             Container(
               width: MediaQuery.of(context).size.width,
               child: InkWell(
-                onTap: (){print("hi");},
+                onTap: (){
+                  raume = ["Deafault"];
+                  raumwahl = "Deafault";
+                  var steckdosen = [
+                    []
+                  ];
+                  var steckdosenWerteProzent = [
+                    []
+                  ];
+                },
                 child: Text("Alles Löschen",style: TextStyle(fontSize: 20, color: Colors.red),),
               ),
             )
