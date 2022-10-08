@@ -41,18 +41,19 @@ class _QuickCompareState extends State<QuickCompare> {
       children: [
         //hier kommt einstellungegn
         BottomNavigationBar(
-            items: const <BottomNavigationBarItem>[
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.auto_graph), label: "Dashboard"),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.bar_chart), label: "Graphen"),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.settings), label: "Einstellungen"),
-            ],
-            currentIndex: navigationindex,
-            onTap: (value) => setState(() {
-                  navigationindex = value;
-                }))
+          showUnselectedLabels: false,
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+                icon: Icon(Icons.auto_graph), label: "Dashboard"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.bar_chart), label: "Graphen"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.settings), label: "Einstellungen"),
+          ],
+          currentIndex: navigationindex,
+          onTap: (value) => setState(() {
+                navigationindex = value;
+        }))
       ],
     );
   }
@@ -164,18 +165,19 @@ class _QuickCompareState extends State<QuickCompare> {
                 ),
               ),
               BottomNavigationBar(
-                  items: const <BottomNavigationBarItem>[
-                    BottomNavigationBarItem(
-                        icon: Icon(Icons.auto_graph), label: "Dashboard"),
-                    BottomNavigationBarItem(
-                        icon: Icon(Icons.bar_chart), label: "Graphen"),
-                    BottomNavigationBarItem(
-                        icon: Icon(Icons.settings), label: "Einstellungen"),
-                  ],
-                  currentIndex: navigationindex,
-                  onTap: (value) => setState(() {
-                        navigationindex = value;
-                      }))
+                showUnselectedLabels: false,
+                items: const <BottomNavigationBarItem>[
+                  BottomNavigationBarItem(
+                      icon: Icon(Icons.auto_graph), label: "Dashboard"),
+                  BottomNavigationBarItem(
+                      icon: Icon(Icons.bar_chart), label: "Graphen"),
+                  BottomNavigationBarItem(
+                      icon: Icon(Icons.settings), label: "Einstellungen"),
+                ],
+                currentIndex: navigationindex,
+                onTap: (value) => setState(() {
+                      navigationindex = value;
+                    }))
             ]),
     );
   }
