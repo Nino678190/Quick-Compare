@@ -57,7 +57,7 @@ class _QuickCompareState extends State<QuickCompare> {
               width: MediaQuery.of(context).size.width,
               child: InkWell(
                 onTap: (){print("hi");},
-                child: Text("Räume Löschen",style: TextStyle(fontSize: 20),),
+                child: Text("Alles Löschen",style: TextStyle(fontSize: 20, color: Colors.red),),
               ),
             )
           ],
