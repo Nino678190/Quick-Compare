@@ -28,13 +28,28 @@ class QuickCompare extends StatefulWidget {
 
 class _QuickCompareState extends State<QuickCompare> {
 
-  int navigationindex=1;
+  int navigationindex=0;
   
+  Widget EinStellungen(){
+    return Column(
+      children: [
+        //hier kommt einstellungegn
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
+      appBar: AppBar(title:Text("Quick Compare")),
+      body: navigationindex==2?EinStellungen():Column(
         children: <Widget>[
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              IconButton(onPressed: (){}, icon: Icon(Icons.add,size: 30,))
+            ],
+          ),
           Expanded(
             child: ListView.builder(
               itemCount: 10,
@@ -55,13 +70,10 @@ class _QuickCompareState extends State<QuickCompare> {
                               gradient: LinearGradient(
                                 begin: Alignment.centerLeft,
                                 colors: [
-                                  // use your preferred colors
                                   Colors.red,
                                   Colors.yellow,
                                   Colors.green,
                                 ],
-                                // start at the top
-                                // end at the bottom
                                 end: Alignment.centerRight,
                               ),
                             ),),
@@ -77,8 +89,8 @@ class _QuickCompareState extends State<QuickCompare> {
           ),
           BottomNavigationBar(
             items: const <BottomNavigationBarItem>[
-              BottomNavigationBarItem(icon: Icon(Icons.auto_graph),label: "Graphen"),
-              BottomNavigationBarItem(icon: Icon(Icons.bar_chart),label: "Dashboard"),
+              BottomNavigationBarItem(icon: Icon(Icons.auto_graph),label: "Dashboard"),
+              BottomNavigationBarItem(icon: Icon(Icons.bar_chart),label: "Graphen"),
               BottomNavigationBarItem(icon: Icon(Icons.settings),label:"Einstellungen"),
             ],
 
