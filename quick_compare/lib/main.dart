@@ -27,7 +27,7 @@ class QuickCompare extends StatefulWidget {
 }
 
 class _QuickCompareState extends State<QuickCompare> {
-  int navigationindex = 0;
+  int navigationindex = 1;
   var raume = ["Schlafzimmer"];
   String raumwahl = "Schlafzimmer";
   var steckdosen = [
@@ -180,7 +180,7 @@ class _QuickCompareState extends State<QuickCompare> {
                                     left: MediaQuery.of(context).size.width/(100/steckdosenWerteProzent[raume.indexOf(raumwahl)][index])<MediaQuery.of(context).size.width-3 ? MediaQuery.of(context).size.width/(100/steckdosenWerteProzent[raume.indexOf(raumwahl)][index]) : MediaQuery.of(context).size.width-3,
                                     child: Container(
                                       width: 3,
-                                      height: 55,
+                                      height: 50,
                                       color: Colors.black,
                                     ),
                                   )
