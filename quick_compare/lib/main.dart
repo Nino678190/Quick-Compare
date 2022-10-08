@@ -48,7 +48,11 @@ class _QuickCompareState extends State<QuickCompare> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text("Theme"),
-                Switch(value: false, onChanged:(value) {value=!value;},)
+                Switch(value: false, onChanged:(value) {
+                setState(() {
+                  value=!value;
+                });
+                },)
               ],
             )
           ],
@@ -173,7 +177,7 @@ class _QuickCompareState extends State<QuickCompare> {
                                   ),
                                   Positioned(
                                     top: 0,
-                                    left: MediaQuery.of(context).size.width/(100/steckdosenWerteProzent[raume.indexOf(raumwahl)][index])<MediaQuery.of(context).size.width-10 ? MediaQuery.of(context).size.width/(100/steckdosenWerteProzent[raume.indexOf(raumwahl)][index]) : MediaQuery.of(context).size.width-10,
+                                    left: MediaQuery.of(context).size.width/(100/steckdosenWerteProzent[raume.indexOf(raumwahl)][index])<MediaQuery.of(context).size.width-3 ? MediaQuery.of(context).size.width/(100/steckdosenWerteProzent[raume.indexOf(raumwahl)][index]) : MediaQuery.of(context).size.width-3,
                                     child: Container(
                                       width: 3,
                                       height: 55,
