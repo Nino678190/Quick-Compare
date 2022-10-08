@@ -80,7 +80,7 @@ class _QuickCompareState extends State<QuickCompare> {
                                 TextButton(
                                     onPressed: () {
                                       setState(() {
-                                        if (!steckcontroller.text.contains(new RegExp('^[a-zA-Z]*')) || steckdosen[raume.indexOf(raumwahl)].contains(steckcontroller.text) || steckcontroller.text.contains(new RegExp(r'^[0-9]+$'))){
+                                        if (!steckcontroller.text.contains(new RegExp('^[a-zA-Z]*')) || steckdosen[raume.indexOf(raumwahl)].contains(steckcontroller.text) || steckcontroller.text.contains(new RegExp(r'^[ ]+$')) || steckcontroller.text==""){
                                           steckcontroller.text="Invalid";
                                         }else{
                                           steckdosen[raume.indexOf(raumwahl)].add(steckcontroller.text);
