@@ -48,9 +48,9 @@ class _QuickCompareState extends State<QuickCompare> {
           showUnselectedLabels: false,
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-                icon: Icon(Icons.auto_graph), label: "Dashboard"),
+                icon: Icon(Icons.auto_graph), label: "Graphen"),
             BottomNavigationBarItem(
-                icon: Icon(Icons.bar_chart), label: "Graphen"),
+                icon: Icon(Icons.bar_chart), label: "Dashboard"),
             BottomNavigationBarItem(
                 icon: Icon(Icons.settings), label: "Einstellungen"),
           ],
@@ -87,7 +87,7 @@ class _QuickCompareState extends State<QuickCompare> {
                                       setState(() {
                                         if (!steckcontroller.text.contains(RegExp('^[a-zA-Z]*')) || steckdosen[raume.indexOf(raumwahl)].contains(steckcontroller.text) || steckcontroller.text.contains(RegExp(r'^[ ]+$')) || steckcontroller.text==""){
                                           const snackBar = SnackBar(
-                                            content: Text('Yay! A SnackBar!'),
+                                            content: Text('Ungültiger Name'),
                                           );
                                           ScaffoldMessenger.of(context).showSnackBar(snackBar);
                                         }else{
@@ -192,9 +192,9 @@ class _QuickCompareState extends State<QuickCompare> {
                 showUnselectedLabels: false,
                 items: const <BottomNavigationBarItem>[
                   BottomNavigationBarItem(
-                      icon: Icon(Icons.auto_graph), label: "Dashboard"),
+                      icon: Icon(Icons.auto_graph), label: "Graphen"),
                   BottomNavigationBarItem(
-                      icon: Icon(Icons.bar_chart), label: "Graphen"),
+                      icon: Icon(Icons.bar_chart), label: "Dashboard"),
                   BottomNavigationBarItem(
                       icon: Icon(Icons.settings), label: "Einstellungen"),
                 ],
