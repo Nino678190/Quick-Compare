@@ -86,7 +86,10 @@ class _QuickCompareState extends State<QuickCompare> {
                                     onPressed: () {
                                       setState(() {
                                         if (!steckcontroller.text.contains(RegExp('^[a-zA-Z]*')) || steckdosen[raume.indexOf(raumwahl)].contains(steckcontroller.text) || steckcontroller.text.contains(RegExp(r'^[ ]+$')) || steckcontroller.text==""){
-                                          steckcontroller.text="Invalid";
+                                          const snackBar = SnackBar(
+                                            content: Text('Yay! A SnackBar!'),
+                                          );
+                                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
                                         }else{
                                           steckdosen[raume.indexOf(raumwahl)].add(steckcontroller.text);
                                           steckcontroller.text="";
