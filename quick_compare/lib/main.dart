@@ -46,9 +46,20 @@ class _QuickCompareState extends State<QuickCompare> {
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Container(color: Colors.green,child: Text(""),width: MediaQuery.of(context).size.width/3,height: 50,),
-                            Container(color: Colors.yellow,child: Text(""),width: MediaQuery.of(context).size.width/3,height: 50,),
-                            Container(color: Colors.red,child: Text(""),width:MediaQuery.of(context).size.width/3,height: 50,),
+                            Container(child: Text(""),width: MediaQuery.of(context).size.width,height: 50,decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                begin: Alignment.centerLeft,
+                                colors: [
+                                  // use your preferred colors
+                                  Colors.red,
+                                  Colors.yellow,
+                                  Colors.green,
+                                ],
+                                // start at the top
+                                // end at the bottom
+                                end: Alignment.centerRight,
+                              ),
+                            ),),
                           ],
                         ),
                       ]
