@@ -1,0 +1,118 @@
+[
+  {
+    "Name": "Ofen",
+    "Verbrauch pro Stunde": "1500W"
+  },
+  {
+    "Name": "Lampe",
+    "Verbrauch pro Stunde": "400W"
+  },
+  {
+    "Name": "Mikrowelle",
+    "Verbrauch pro Stunde": "800W"
+  },
+  {
+    "Name": "Kuehlschrank",
+    "Verbrauch pro Stunde": "0,01W"
+  },
+  {
+    "Name": "Spuelmaschiene",
+    "Verbrauch pro Stunde": "8,2W"
+  },
+  {
+    "Name": "Dunstabzugshaube",
+    "Verbrauch pro Stunde": "2,3W"
+  },
+  {
+    "Name": "Rasierer",
+    "Verbrauch pro Stunde": "6W"
+  },
+  {
+    "Name": "elektrische Zahnbuerste",
+    "Verbrauch pro Stunde": "2W"
+  },
+  {
+    "Name": "Waschmaschiene",
+    "Verbrauch pro Stunde": "2000W"
+  },
+  {
+    "Name": "Foehn",
+    "Verbrauch pro Stunde": "2000W"
+  },
+  {
+    "Name": "Handy",
+    "Verbrauch pro Stunde": "3W"
+  },
+  {
+    "Name": "Taschenlampe",
+    "Verbrauch pro Stunde": "8,6W"
+  },
+  {
+    "Name": "Computer",
+    "Verbrauch pro Stunde": "60W"
+  },
+  {
+    "Name": "Fernseher",
+    "Verbrauch pro Stunde": "70W"
+  },
+  {
+    "Name": "Festnetztelefon",
+    "Verbrauch pro Stunde": "120W"
+  },
+  {
+    "Name": "Kuechenmaschiene",
+    "Verbrauch pro Stunde": "550W"
+  },
+  {
+    "Name": "Tiefkuehler",
+    "Verbrauch pro Stunde": "185W"
+  },
+  {
+    "Name": "Gaming-PC",
+    "Verbrauch pro Stunde": "182,5W"
+  },
+  {
+    "Name": "Radio",
+    "Verbrauch pro Stunde": "13W"
+  },
+  {
+    "Name": "Lautsprecher",
+    "Verbrauch pro Stunde": "2,25W"
+  },
+  {
+    "Name": "Kopfhoerer",
+    "Verbrauch pro Stunde": "55W"
+  },
+  {
+    "Name": "Beamer",
+    "Verbrauch pro Stunde": "250W"
+  },
+  {
+    "Name": "Munddusche",
+    "Verbrauch pro Stunde": "0,002W"
+  },
+  {
+    "Name": "Smartspeaker",
+    "Verbrauch pro Stunde": "4,8W"
+  },
+  {
+    "Name": "Ventilator",
+    "Verbrauch pro Stunde": "100W"
+  },
+  {
+    "Name": "Stereoanlage",
+    "Verbrauch pro Stunde": "7,8W"
+  },
+  {
+    "Name": "kuehl-Gefrier-Kombo",
+    "Verbrauch pro Stunde": "18,3W"
+  },
+  {
+    "Name": "Satreciever",
+    "Verbrauch pro Stunde": "10W"
+  },
+  {
+    "Name": "Konsole",
+    "Verbrauch pro Stunde": "130W"
+  }
+]
