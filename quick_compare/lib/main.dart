@@ -92,6 +92,7 @@ class _QuickCompareState extends State<QuickCompare> {
                                           ScaffoldMessenger.of(context).showSnackBar(snackBar);
                                         }else{
                                           steckdosen[raume.indexOf(raumwahl)].add(steckcontroller.text);
+                                          steckdosenWerteProzent[raume.indexOf(raumwahl)].add(100);
                                           steckcontroller.text="";
                                         }
                                       });
@@ -163,7 +164,7 @@ class _QuickCompareState extends State<QuickCompare> {
                                   ),
                                   Positioned(
                                     top: 0,
-                                    left: MediaQuery.of(context).size.width/(100/steckdosenWerteProzent[0][0]),
+                                    left: MediaQuery.of(context).size.width/(100/steckdosenWerteProzent[raume.indexOf(raumwahl)][index])<MediaQuery.of(context).size.width-10 ? MediaQuery.of(context).size.width/(100/steckdosenWerteProzent[raume.indexOf(raumwahl)][index]) : MediaQuery.of(context).size.width-10,
                                     child: Container(
                                       width: 10,
                                       height: 50,
