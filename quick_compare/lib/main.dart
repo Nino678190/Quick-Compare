@@ -26,8 +26,8 @@ class QuickCompare extends StatefulWidget {
 
 class _QuickCompareState extends State<QuickCompare> {
   int navigationindex = 1;
-  var raume = ["Deafault"];
-  String raumwahl = "Deafault";
+  var raume = ["Default"];
+  String raumwahl = "Default";
   var steckdosen = [
     []
   ];
@@ -35,6 +35,7 @@ class _QuickCompareState extends State<QuickCompare> {
     []
   ];
   bool isEditRooms=false;
+  bool isEditSockets=false;
 
   TextEditingController steckcontroller = TextEditingController();
 
@@ -45,8 +46,150 @@ class _QuickCompareState extends State<QuickCompare> {
         return Row(
           children: <Widget>[
             Text(raume[index]),
-            IconButton(onPressed: (){}, icon: Icon(Icons.edit)),
-            IconButton(onPressed: (){}, icon: Icon(Icons.delete)),
+            IconButton(onPressed: (){}, icon: const Icon(Icons.edit), color: index==0 ? Colors.grey : Colors.black,),
+            IconButton(onPressed: (){
+              if(index != 0) {
+                showDialog(context: context, builder: (context) {
+                  return AlertDialog(
+                    title: Text('${raume[index]} löschen?'),
+                    content: SingleChildScrollView(
+                      child: ListBody(
+                        children: <Widget>[
+                          Text(
+                              'Willst du den Raum "${raume[index]}" wirklich löschen?'),
+                          const Text(
+                              'Alle sich in diesem Raum befindlichen Steckdosen werden auch gelöscht.'),
+                        ],
+                      ),
+                    ),
+                    actions: <Widget>[
+                      Row(
+                        children: [
+                          Expanded(
+                            flex: 5,
+                            child: Align(
+                              alignment: Alignment.centerLeft,
+                              child: TextButton(
+                                child: const Text('Abbrechen'),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                              ),
+                            ),),
+                          Expanded(
+                            flex: 5,
+                            child: Align(
+                              widthFactor: 0.5,
+                              alignment: Alignment.centerRight,
+                              child: TextButton(
+                                child: const Text('OK'),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                              ),
+                            ),),
+
+                        ],
+                      )
+                    ],
+                  );
+                });
+              }
+              else {
+                showDialog(context: context, builder: (context) {
+                  return AlertDialog(
+                    title: Text('${raume[index]} löschen?'),
+                    content: SingleChildScrollView(
+                      child: ListBody(
+                        children: <Widget>[
+                          Text(
+                              'Du kannst den Raum "${raume[index]}" nicht löschen löschen.',style: TextStyle(fontStyle: FontStyle.italic,color: Colors.grey),),
+                        ],
+                      ),
+                    ),
+                    actions: <Widget>[
+                      Row(
+                        children: [
+                          Expanded(
+                            flex: 5,
+                            child: Align(
+                              widthFactor: 0.5,
+                              alignment: Alignment.centerRight,
+                              child: TextButton(
+                                child: const Text('OK'),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                              ),
+                            ),),
+
+                        ],
+                      )
+                    ],
+                  );
+                });
+              }
+            }, icon: Icon(Icons.delete), color: index==0 ? Colors.grey : Colors.black,),
+          ],
+        );
+      },
+    );
+  }
+  Widget EditSocket(){
+    return ListView.builder(
+      itemCount: steckdosen[raume.indexOf(raumwahl)].length,
+      itemBuilder: (context, index) {
+        return Row(
+          children: <Widget>[
+            Text(steckdosen[raume.indexOf(raumwahl)][index]),
+            IconButton(onPressed: (){}, icon: const Icon(Icons.edit), color: Colors.black,),
+            IconButton(onPressed: (){
+              showDialog(context: context, builder: (context) {
+                return AlertDialog(
+                  title: Text('${steckdosen[raume.indexOf(raumwahl)][index]} löschen?'),
+                  content: SingleChildScrollView(
+                    child: ListBody(
+                      children: <Widget>[
+                        Text(
+                            'Willst du die Steckdose "${steckdosen[raume.indexOf(raumwahl)][index]}" wirklich löschen?'),
+                        const Text(
+                            'Diese Aktion kann nicht rückgängig gemacht werden.'),
+                      ],
+                    ),
+                  ),
+                  actions: <Widget>[
+                    Row(
+                      children: [
+                        Expanded(
+                          flex: 5,
+                          child: Align(
+                            alignment: Alignment.centerLeft,
+                            child: TextButton(
+                              child: const Text('Abbrechen'),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                            ),
+                          ),),
+                        Expanded(
+                          flex: 5,
+                          child: Align(
+                            widthFactor: 0.5,
+                            alignment: Alignment.centerRight,
+                            child: TextButton(
+                              child: const Text('OK'),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                            ),
+                          ),),
+
+                      ],
+                    )
+                  ],
+                );
+              });
+            }, icon: Icon(Icons.delete), color: index==0 ? Colors.grey : Colors.black,),
           ],
         );
       },
@@ -61,7 +204,7 @@ class _QuickCompareState extends State<QuickCompare> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text("Theme",style: TextStyle(fontSize: 20),),
+                const Text("Theme",style: TextStyle(fontSize: 20),),
                 Switch(value: false, onChanged:(value) {
                 setState(() {
                   value=!value;
@@ -74,26 +217,37 @@ class _QuickCompareState extends State<QuickCompare> {
               child: InkWell(
                 onTap: (){
                   setState(() {
-                    isEditRooms=true;
+                    isEditSockets=true;
                   });
                 },
-                child: Text("Räume bearbeiten",style: TextStyle(fontSize: 20, color: Colors.red),),
+                child: const Text("Steckdosen bearbeiten",style: TextStyle(fontSize: 20,),),
               ),
             ),
             Container(
               width: MediaQuery.of(context).size.width,
               child: InkWell(
                 onTap: (){
-                  raume = ["Deafault"];
-                  raumwahl = "Deafault";
-                  var steckdosen = [
+                  setState(() {
+                    isEditRooms=true;
+                  });
+                },
+                child: const Text("Räume bearbeiten",style: TextStyle(fontSize: 20,),),
+              ),
+            ),
+            Container(
+              width: MediaQuery.of(context).size.width,
+              child: InkWell(
+                onTap: (){
+                  raume = ["Default"];
+                  raumwahl = "Default";
+                  steckdosen = [
                     []
                   ];
-                  var steckdosenWerteProzent = [
+                  steckdosenWerteProzent = [
                     []
                   ];
                 },
-                child: Text("Alles Löschen",style: TextStyle(fontSize: 20, color: Colors.red),),
+                child: const Text("Alles Löschen",style: TextStyle(fontSize: 20, color: Colors.red),),
               ),
             ),
           ],
@@ -121,9 +275,12 @@ class _QuickCompareState extends State<QuickCompare> {
     return Scaffold(
       appBar: AppBar(title: Text("Quick Compare"), leading: IconButton(onPressed: (){setState(() {
         isEditRooms = false;
-      });},icon: Icon(Icons.arrow_back),),),
+        isEditSockets = false;
+      });},icon: const Icon(Icons.arrow_back),),),
       body: navigationindex == 2 && isEditRooms
           ? EditRooms()
+          : navigationindex == 2 && isEditSockets
+          ? EditSocket()
           : navigationindex == 2?Einstellungen()
           :Column(children: <Widget>[
               Row(
