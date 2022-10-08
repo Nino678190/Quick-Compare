@@ -45,7 +45,7 @@ class _QuickCompareState extends State<QuickCompare> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text("Theme"),
+                Text("Theme",style: TextStyle(fontSize: 20),),
                 Switch(value: false, onChanged:(value) {
                 setState(() {
                   value=!value;
@@ -54,10 +54,10 @@ class _QuickCompareState extends State<QuickCompare> {
               ],
             ),
             Container(
-              
+              width: MediaQuery.of(context).size.width,
               child: InkWell(
                 onTap: (){print("hi");},
-                child: Text("Räume Löschen"),
+                child: Text("Räume Löschen",style: TextStyle(fontSize: 20),),
               ),
             )
           ],
