@@ -40,6 +40,7 @@ class _QuickCompareState extends State<QuickCompare> {
     return Column(
       children: [
         //hier kommt einstellungegn
+        Expanded(child: Text("abc")),
         BottomNavigationBar(
           showUnselectedLabels: false,
           items: const <BottomNavigationBarItem>[
