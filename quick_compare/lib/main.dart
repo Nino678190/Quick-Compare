@@ -28,7 +28,6 @@ class _QuickCompareState extends State<QuickCompare> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Quick Compare")),
       body: Column(
         children: <Widget>[
           Expanded(
