@@ -37,6 +37,10 @@ class _QuickCompareState extends State<QuickCompare> {
 
   TextEditingController steckcontroller = TextEditingController();
 
+  Widget EditRooms(){
+    return ListView();
+  }
+
   Widget Einstellungen() {
     return Column(
       children: [
