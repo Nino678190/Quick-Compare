@@ -44,6 +44,7 @@ class _QuickCompareState extends State<QuickCompare> {
         return Row(
           children: <Widget>[
             Text(raume[index]),
+            IconButton(onPressed: (){}, icon: Icon(Icons.edit))
           ],
         )
       },
