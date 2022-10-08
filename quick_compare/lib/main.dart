@@ -57,6 +57,15 @@ class _QuickCompareState extends State<QuickCompare> {
               width: MediaQuery.of(context).size.width,
               child: InkWell(
                 onTap: (){
+
+                },
+                child: Text("Räume bearbeiten",style: TextStyle(fontSize: 20, color: Colors.red),),
+              ),
+            ),
+            Container(
+              width: MediaQuery.of(context).size.width,
+              child: InkWell(
+                onTap: (){
                   raume = ["Deafault"];
                   raumwahl = "Deafault";
                   var steckdosen = [
@@ -68,7 +77,7 @@ class _QuickCompareState extends State<QuickCompare> {
                 },
                 child: Text("Alles Löschen",style: TextStyle(fontSize: 20, color: Colors.red),),
               ),
-            )
+            ),
           ],
         )),
         BottomNavigationBar(
