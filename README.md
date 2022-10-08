@@ -1,1 +1,1 @@
-# Quick-Compare
+# Quick Compare
