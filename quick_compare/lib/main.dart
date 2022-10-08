@@ -40,7 +40,13 @@ class _QuickCompareState extends State<QuickCompare> {
   Widget EditRooms(){
     return ListView.builder(
       itemCount: raume.length,
-      itemBuilder: (context, index) {},
+      itemBuilder: (context, index) {
+        return Row(
+          children: <Widget>[
+            Text(raume[index]),
+          ],
+        )
+      },
     );
   }
 
