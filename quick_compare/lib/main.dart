@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -26,7 +28,7 @@ class QuickCompare extends StatefulWidget {
 
 class _QuickCompareState extends State<QuickCompare> {
 
-  int navigationindex=0;
+  int navigationindex=1;
   
   @override
   Widget build(BuildContext context) {
@@ -75,9 +77,9 @@ class _QuickCompareState extends State<QuickCompare> {
           ),
           BottomNavigationBar(
             items: const <BottomNavigationBarItem>[
-              BottomNavigationBarItem(icon: Icon(Icons.home),label: "All"),
-              BottomNavigationBarItem(icon: Icon(Icons.done),label: "Finished"),
-              BottomNavigationBarItem(icon: Icon(Icons.close),label:"Pending"),
+              BottomNavigationBarItem(icon: Icon(Icons.auto_graph),label: "Graphen"),
+              BottomNavigationBarItem(icon: Icon(Icons.bar_chart),label: "Dashboard"),
+              BottomNavigationBarItem(icon: Icon(Icons.settings),label:"Einstellungen"),
             ],
 
             currentIndex: navigationindex,
