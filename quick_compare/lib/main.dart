@@ -32,15 +32,15 @@ class _QuickCompareState extends State<QuickCompare> {
       body: Column(
         children: [
           Expanded(
-            child: GridView.builder(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 1),
+            child: ListView.builder(
               itemCount: 3,
               itemBuilder: (context, index) {
                 return Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Container(color: Colors.green,),
-                    Container(color: Colors.yellow,),
-                    Container(color: Colors.red,),
+                    Container(color: Colors.green,child: Text(""),width: MediaQuery.of(context).size.width/3,),
+                    Container(color: Colors.yellow,child: Text(""),width: MediaQuery.of(context).size.width/3,),
+                    Container(color: Colors.red,child: Text(""),width:MediaQuery.of(context).size.width/3,)
                   ],
                 );
               },
