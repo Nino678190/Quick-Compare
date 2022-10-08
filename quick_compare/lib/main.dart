@@ -49,9 +49,16 @@ class _QuickCompareState extends State<QuickCompare> {
                 Switch(value: false, onChanged:(value) {
                 setState(() {
                   value=!value;
-                });
+                  });
                 },)
               ],
+            ),
+            Container(
+              
+              child: InkWell(
+                onTap: (){print("hi");},
+                child: Text("Räume Löschen"),
+              ),
             )
           ],
         )),
