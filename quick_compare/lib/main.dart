@@ -33,10 +33,13 @@ class _QuickCompareState extends State<QuickCompare> {
   var steckdosen = [
     ["Steckdose 1"]
   ];
+  var steckdosenWerteProzent = [
+    [25]
+  ];
 
   TextEditingController steckcontroller = TextEditingController();
 
-  Widget EinStellungen() {
+  Widget Einstellungen() {
     return Column(
       children: [
         //hier kommt einstellungegn
@@ -64,7 +67,7 @@ class _QuickCompareState extends State<QuickCompare> {
     return Scaffold(
       appBar: AppBar(title: Text("Quick Compare")),
       body: navigationindex == 2
-          ? EinStellungen()
+          ? Einstellungen()
           : Column(children: <Widget>[
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -82,7 +85,7 @@ class _QuickCompareState extends State<QuickCompare> {
                                 TextButton(
                                     onPressed: () {
                                       setState(() {
-                                        if (!steckcontroller.text.contains(new RegExp('^[a-zA-Z]*')) || steckdosen[raume.indexOf(raumwahl)].contains(steckcontroller.text) || steckcontroller.text.contains(new RegExp(r'^[ ]+$')) || steckcontroller.text==""){
+                                        if (!steckcontroller.text.contains(RegExp('^[a-zA-Z]*')) || steckdosen[raume.indexOf(raumwahl)].contains(steckcontroller.text) || steckcontroller.text.contains(RegExp(r'^[ ]+$')) || steckcontroller.text==""){
                                           steckcontroller.text="Invalid";
                                         }else{
                                           steckdosen[raume.indexOf(raumwahl)].add(steckcontroller.text);
@@ -90,13 +93,13 @@ class _QuickCompareState extends State<QuickCompare> {
                                         }
                                       });
                                     },
-                                    child: Text("Add"))
+                                    child: const Text("Add"))
                               ],
                             );
                           },
                         );
                       },
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.add,
                         size: 30,
                       )),
@@ -128,7 +131,7 @@ class _QuickCompareState extends State<QuickCompare> {
                           steckdosen[raume.indexOf(raumwahl)][index],
                           style: TextStyle(fontSize: 25.0),
                         ),
-                        Divider(
+                        const Divider(
                           height: 5.0,
                           color: Colors.transparent,
                         ),
@@ -137,26 +140,43 @@ class _QuickCompareState extends State<QuickCompare> {
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Container(
-                                child: Text(""),
-                                width: MediaQuery.of(context).size.width,
-                                height: 50,
-                                decoration: BoxDecoration(
-                                  gradient: LinearGradient(
-                                    begin: Alignment.centerLeft,
-                                    colors: [
-                                      Colors.red,
-                                      Colors.yellow,
-                                      Colors.green,
-                                    ],
-                                    end: Alignment.centerRight,
+                              Stack(
+                                children: [
+                                  Container(
+                                    width: MediaQuery.of(context).size.width,
+                                    height: 50,
+                                    decoration: const BoxDecoration(
+                                      gradient: LinearGradient(
+                                        begin: Alignment.centerLeft,
+                                        colors: [
+                                          Colors.red,
+                                          Colors.yellow,
+                                          Colors.green,
+                                        ],
+                                        end: Alignment.centerRight,
+                                      ),
+                                    ),
+                                    child: const Text(""),
                                   ),
-                                ),
-                              ),
+                                  Positioned(
+                                    top: 0,
+                                    left: MediaQuery.of(context).size.width/(100/steckdosenWerteProzent[0][0]),
+                                    child: Container(
+                                      width: 10,
+                                      height: 50,
+                                      color: Colors.black,
+                                    ),
+                                  )
+                                ],
+                              )
+                              //////
+
+
+
                             ],
                           ),
                         ]),
-                        Divider(
+                        const Divider(
                           height: 40.0,
                           color: Colors.transparent,
                         ),
