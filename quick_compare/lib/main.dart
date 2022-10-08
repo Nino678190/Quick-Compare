@@ -186,10 +186,6 @@ class _QuickCompareState extends State<QuickCompare> {
                                   )
                                 ],
                               )
-                              //////
-
-
-
                             ],
                           ),
                         ]),
