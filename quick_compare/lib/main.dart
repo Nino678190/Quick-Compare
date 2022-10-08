@@ -42,8 +42,17 @@ class _QuickCompareState extends State<QuickCompare> {
   Widget Einstellungen() {
     return Column(
       children: [
-        //hier kommt einstellungegn
-        Expanded(child: Text("abc")),
+        Expanded(child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text("Theme"),
+                Switch(value: false, onChanged:(value) {value=!value;},)
+              ],
+            )
+          ],
+        )),
         BottomNavigationBar(
           showUnselectedLabels: false,
           items: const <BottomNavigationBarItem>[
@@ -166,8 +175,8 @@ class _QuickCompareState extends State<QuickCompare> {
                                     top: 0,
                                     left: MediaQuery.of(context).size.width/(100/steckdosenWerteProzent[raume.indexOf(raumwahl)][index])<MediaQuery.of(context).size.width-10 ? MediaQuery.of(context).size.width/(100/steckdosenWerteProzent[raume.indexOf(raumwahl)][index]) : MediaQuery.of(context).size.width-10,
                                     child: Container(
-                                      width: 10,
-                                      height: 50,
+                                      width: 3,
+                                      height: 55,
                                       color: Colors.black,
                                     ),
                                   )
