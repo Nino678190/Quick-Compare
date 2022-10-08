@@ -25,6 +25,9 @@ class QuickCompare extends StatefulWidget {
 }
 
 class _QuickCompareState extends State<QuickCompare> {
+
+  int navigationindex=0;
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,43 +73,18 @@ class _QuickCompareState extends State<QuickCompare> {
               },
             ),
           ),
-          Container(
-            color: Color(0xFF313131).withOpacity(0.7),
-            height: 50,
-            width: double.maxFinite,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                IconButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/');
-                  },
-                  icon: Icon(
-                    Icons.auto_graph,
-                    color: Colors.white,
-                  ),
-                ),
-                IconButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/discover');
-                  },
-                  icon: Icon(
-                    Icons.bar_chart,
-                    color: Colors.white,
-                  ),
-                ),
-                IconButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/mybookings');
-                  },
-                  icon: Icon(
-                    Icons.settings,
-                    color: Colors.white,
-                  ),
-                ),
-              ],
-            ),
-          ),
+          BottomNavigationBar(
+            items: const <BottomNavigationBarItem>[
+              BottomNavigationBarItem(icon: Icon(Icons.home),label: "All"),
+              BottomNavigationBarItem(icon: Icon(Icons.done),label: "Finished"),
+              BottomNavigationBarItem(icon: Icon(Icons.close),label:"Pending"),
+            ],
+
+            currentIndex: navigationindex,
+            onTap: (value) => setState(() {
+               navigationindex=value;
+            })
+           )
         ]
       ),
     );
