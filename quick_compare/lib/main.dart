@@ -119,10 +119,12 @@ class _QuickCompareState extends State<QuickCompare> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Quick Compare")),
-      body: navigationindex == 2
-          ? Einstellungen()
-          : isEditRooms?EditRooms()
+      appBar: AppBar(title: Text("Quick Compare"), leading: IconButton(onPressed: (){setState(() {
+        isEditRooms = false;
+      });},icon: Icon(Icons.arrow_back),),),
+      body: navigationindex == 2 && isEditRooms
+          ? EditRooms()
+          : navigationindex == 2?Einstellungen()
           :Column(children: <Widget>[
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
