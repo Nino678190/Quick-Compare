@@ -41,7 +41,7 @@ class _QuickCompareState extends State<QuickCompare> {
   var updateSockets = ValueNotifier<bool>(false);
   bool isEditRooms = false;
   bool isEditSockets = false;
-
+  TextEditingController raumecontroller = TextEditingController();
   TextEditingController steckcontroller = TextEditingController();
 
   Widget EditRooms() {
@@ -375,7 +375,16 @@ class _QuickCompareState extends State<QuickCompare> {
                         builder: (context) {
                           return AlertDialog(
                             title: Text("Add Raum"),
-                            content: TextField(),
+                            content: TextField(
+                              controller: raumecontroller,
+                            ),
+                            actions: [
+                              TextButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                  child: Text("Abrechen"))
+                            ],
                           );
                         },
                       );
@@ -437,6 +446,7 @@ class _QuickCompareState extends State<QuickCompare> {
                                                   steckcontroller.text = "";
                                                   updateSockets.value =
                                                       !updateSockets.value;
+                                                  Navigator.of(context).pop();
                                                 }
                                               });
                                             },
