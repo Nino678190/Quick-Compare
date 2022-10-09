@@ -11,10 +11,12 @@ const List<String> languages = <String>[
 
 void main() async {
   Future<bool> sumStream() async {
+    try{
     var url = Uri.parse('http://94.45.226.208/');
     var response = await http.get(url);
     print('Response status: ${response.statusCode}');
     print('Response body: ${response.body}');
+    }on Exception{print("error");}
     return true;
   }
   const oneSec = Duration(seconds:1);
