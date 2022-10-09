@@ -387,12 +387,8 @@ class _QuickCompareState extends State<QuickCompare> {
                               TextButton(
                                   onPressed: () {
                                     if (!steckcontroller.text
-                                            .contains(RegExp('^[a-zA-Z]*')) ||
-                                        steckdosen[raume.indexOf(raumwahl)]
-                                            .contains(steckcontroller.text) ||
-                                        steckcontroller.text
-                                            .contains(RegExp(r'^[ ]+$')) ||
-                                        steckcontroller.text == "") {
+                                            .contains(RegExp('^[a-zA-Z]*')) || raume.contains(raumecontroller.text)
+                                        ) {
                                       const snackBar = SnackBar(
                                         content: Text('Ungültiger Name'),
                                       );
