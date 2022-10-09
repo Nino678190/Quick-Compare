@@ -384,35 +384,30 @@ class _QuickCompareState extends State<QuickCompare> {
                                     Navigator.of(context).pop();
                                   },
                                   child: Text("Abrechen")),
-                              TextButton(onPressed: (){
-                                if (!steckcontroller.text
-                                                        .contains(RegExp(
-                                                            '^[a-zA-Z]*')) ||
-                                                    steckdosen[raume
-                                                            .indexOf(raumwahl)]
-                                                        .contains(
-                                                            steckcontroller
-                                                                .text) ||
-                                                    steckcontroller.text
-                                                        .contains(RegExp(
-                                                            r'^[ ]+$')) ||
-                                                    steckcontroller.text ==
-                                                        "") {
-                                                  const snackBar = SnackBar(
-                                                    content:
-                                                        Text('Ungültiger Name'),
-                                                  );
-                                                  ScaffoldMessenger.of(context)
-                                                      .showSnackBar(snackBar);
-                                                } else {
-                                                  raume.add(raumecontroller.text);
-                                                  raumwahl==raumecontroller.text;
-                                                  steckdosen.add([]);
-                                                  steckdosenWerteProzent.add([]);
-                                                  raumecontroller.text=="";
-                                                  Navigator.of(context).pop();
-                                                }
-                              }, child: Text("Add"))
+                              TextButton(
+                                  onPressed: () {
+                                    if (!steckcontroller.text
+                                            .contains(RegExp('^[a-zA-Z]*')) ||
+                                        steckdosen[raume.indexOf(raumwahl)]
+                                            .contains(steckcontroller.text) ||
+                                        steckcontroller.text
+                                            .contains(RegExp(r'^[ ]+$')) ||
+                                        steckcontroller.text == "") {
+                                      const snackBar = SnackBar(
+                                        content: Text('Ungültiger Name'),
+                                      );
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(snackBar);
+                                    } else {
+                                      raume.add(raumecontroller.text);
+                                      raumwahl == raumecontroller.text;
+                                      steckdosen.add([]);
+                                      steckdosenWerteProzent.add([]);
+                                      raumecontroller.text == "";
+                                      Navigator.of(context).pop();
+                                    }
+                                  },
+                                  child: Text("Add"))
                             ],
                           );
                         },
