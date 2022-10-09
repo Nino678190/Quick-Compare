@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+
+const List<String> languages = <String>['Deutsch', 'English', 'Français', 'Español'];
+
 void main() {
   runApp(MyApp());
 }
@@ -25,6 +28,7 @@ class QuickCompare extends StatefulWidget {
 }
 
 class _QuickCompareState extends State<QuickCompare> {
+  String lang = languages.first;
   int navigationindex = 1;
   var raume = ["Default"];
   String raumwahl = "Default";
@@ -209,10 +213,31 @@ class _QuickCompareState extends State<QuickCompare> {
               children: [
                 const Text("Theme",style: TextStyle(fontSize: 20),),
                 Switch(value: false, onChanged:(value) {
-                setState(() {
-                  value=!value;
+                  setState(() {
+                    value=!value;
                   });
                 },)
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text("Sprache",style: TextStyle(fontSize: 20),),
+          DropdownButton<String>(
+            value: lang,
+            onChanged: (String? value) {
+              // This is called when the user selects an item.
+              setState(() {
+                lang = value!;
+              });
+            },
+            items: languages.map<DropdownMenuItem<String>>((String value) {
+              return DropdownMenuItem<String>(
+                value: value,
+                child: Text(value),
+              );
+            }).toList(),
+          ),
               ],
             ),
             Container(
