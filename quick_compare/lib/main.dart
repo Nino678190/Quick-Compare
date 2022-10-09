@@ -104,7 +104,7 @@ class _QuickCompareState extends State<QuickCompare> {
                       child: ListBody(
                         children: <Widget>[
                           Text(
-                              'Du kannst den Raum "${raume[index]}" nicht löschen löschen.',style: TextStyle(fontStyle: FontStyle.italic,color: Colors.grey),),
+                              'Du kannst den Raum "${raume[index]}" nicht löschen.',style: TextStyle(fontStyle: FontStyle.italic,color: Colors.grey),),
                         ],
                       ),
                     ),
@@ -119,8 +119,6 @@ class _QuickCompareState extends State<QuickCompare> {
                               child: TextButton(
                                 child: const Text('OK'),
                                 onPressed: () {
-                                  raume.removeAt(index);
-                                  steckdosen.removeAt(index);
                                   Navigator.of(context).pop();
                                 },
                               ),
@@ -311,7 +309,7 @@ class _QuickCompareState extends State<QuickCompare> {
                                           ScaffoldMessenger.of(context).showSnackBar(snackBar);
                                         }else{
                                           steckdosen[raume.indexOf(raumwahl)].add(steckcontroller.text);
-                                          steckdosenWerteProzent[raume.indexOf(raumwahl)].add(100);
+                                          steckdosenWerteProzent[raume.indexOf(raumwahl)].add(0);
                                           steckcontroller.text="";
                                           updateSockets.value=!updateSockets.value;
                                         }
