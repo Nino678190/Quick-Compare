@@ -399,12 +399,14 @@ class _QuickCompareState extends State<QuickCompare> {
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(snackBar);
                                     } else {
-                                      raume.add(raumecontroller.text);
-                                      raumwahl == raumecontroller.text;
-                                      steckdosen.add([]);
-                                      steckdosenWerteProzent.add([]);
-                                      raumecontroller.text == "";
-                                      Navigator.of(context).pop();
+                                      setState(() {
+                                        raume.add(raumecontroller.text);
+                                        raumwahl == raumecontroller.text;
+                                        steckdosen.add([]);
+                                        steckdosenWerteProzent.add([]);
+                                        raumecontroller.text == "";
+                                        Navigator.of(context).pop();
+                                      });
                                     }
                                   },
                                   child: Text("Add"))
