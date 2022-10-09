@@ -34,6 +34,7 @@ class _QuickCompareState extends State<QuickCompare> {
   var steckdosenWerteProzent = [
     []
   ];
+  var updateSockets = ValueNotifier<bool>(false);
   bool isEditRooms=false;
   bool isEditSockets=false;
 
@@ -118,6 +119,8 @@ class _QuickCompareState extends State<QuickCompare> {
                               child: TextButton(
                                 child: const Text('OK'),
                                 onPressed: () {
+                                  raume.removeAt(index);
+                                  steckdosen.removeAt(index);
                                   Navigator.of(context).pop();
                                 },
                               ),
@@ -179,6 +182,8 @@ class _QuickCompareState extends State<QuickCompare> {
                             child: TextButton(
                               child: const Text('OK'),
                               onPressed: () {
+                                steckdosen[raume.indexOf(raumwahl)].removeAt(index);
+                                updateSockets.value=!updateSockets.value;
                                 Navigator.of(context).pop();
                               },
                             ),
@@ -189,7 +194,7 @@ class _QuickCompareState extends State<QuickCompare> {
                   ],
                 );
               });
-            }, icon: Icon(Icons.delete), color: index==0 ? Colors.grey : Colors.black,),
+            }, icon: Icon(Icons.delete), color: Colors.black,),
           ],
         );
       },
@@ -308,6 +313,7 @@ class _QuickCompareState extends State<QuickCompare> {
                                           steckdosen[raume.indexOf(raumwahl)].add(steckcontroller.text);
                                           steckdosenWerteProzent[raume.indexOf(raumwahl)].add(100);
                                           steckcontroller.text="";
+                                          updateSockets.value=!updateSockets.value;
                                         }
                                       });
                                     },
@@ -367,9 +373,9 @@ class _QuickCompareState extends State<QuickCompare> {
                                       gradient: LinearGradient(
                                         begin: Alignment.centerLeft,
                                         colors: [
-                                          Colors.red,
-                                          Colors.yellow,
                                           Colors.green,
+                                          Colors.yellow,
+                                          Colors.red,
                                         ],
                                         end: Alignment.centerRight,
                                       ),
