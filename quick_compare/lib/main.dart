@@ -43,6 +43,8 @@ class _QuickCompareState extends State<QuickCompare> {
   bool isEditSockets = false;
   TextEditingController raumecontroller = TextEditingController();
   TextEditingController steckcontroller = TextEditingController();
+  TextEditingController raumeeditcontroller = TextEditingController();
+  TextEditingController steckeditcontroller = TextEditingController();
 
   Widget EditRooms() {
     return ListView.builder(
@@ -52,13 +54,49 @@ class _QuickCompareState extends State<QuickCompare> {
           children: <Widget>[
             Text(raume[index]),
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (context) {
+                    return AlertDialog(
+                      content: Column(
+                        children: [
+                          Text("Neue Raum Name:"),
+                          TextField(
+                            controller: raumeeditcontroller,
+                          ),
+                        ],
+                      ),
+                      actions: [
+                        TextButton(
+                          onPressed: () {
+                            setState(() {
+                              Navigator.of(context).pop();
+                            });
+                          },
+                          child: Text("Abrechen"),
+                        ),
+                        TextButton(
+                          onPressed: () {
+                            setState(() {
+                              raume[index] = raumeeditcontroller.text;
+                              raumeeditcontroller.text = "";
+                              Navigator.of(context).pop();
+                            });
+                          },
+                          child: Text("Ok"),
+                        )
+                      ],
+                    );
+                  },
+                );
+              },
               icon: const Icon(Icons.edit),
-              color: index == 0 ? Colors.grey : Colors.black,
+              color: raume.length == 1 ? Colors.grey : Colors.black,
             ),
             IconButton(
               onPressed: () {
-                if (index != 0) {
+                if (raume.length > 1) {
                   showDialog(
                       context: context,
                       builder: (context) {
@@ -97,7 +135,14 @@ class _QuickCompareState extends State<QuickCompare> {
                                     child: TextButton(
                                       child: const Text('OK'),
                                       onPressed: () {
-                                        Navigator.of(context).pop();
+                                        setState(() {
+                                          steckdosen.removeAt(index);
+                                          steckdosenWerteProzent
+                                              .removeAt(index);
+                                          raume.removeAt(index);
+                                          raumwahl = raume[0];
+                                          Navigator.of(context).pop();
+                                        });
                                       },
                                     ),
                                   ),
@@ -149,7 +194,7 @@ class _QuickCompareState extends State<QuickCompare> {
                 }
               },
               icon: Icon(Icons.delete),
-              color: index == 0 ? Colors.grey : Colors.black,
+              color: raume.length == 1 ? Colors.grey : Colors.black,
             ),
           ],
         );
@@ -158,79 +203,136 @@ class _QuickCompareState extends State<QuickCompare> {
   }
 
   Widget EditSocket() {
-    return ListView.builder(
-      itemCount: steckdosen[raume.indexOf(raumwahl)].length,
-      itemBuilder: (context, index) {
-        return Row(
-          children: <Widget>[
-            Text(steckdosen[raume.indexOf(raumwahl)][index]),
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(Icons.edit),
-              color: Colors.black,
-            ),
-            IconButton(
-              onPressed: () {
-                showDialog(
-                    context: context,
-                    builder: (context) {
-                      return AlertDialog(
-                        title: Text(
-                            '${steckdosen[raume.indexOf(raumwahl)][index]} löschen?'),
-                        content: SingleChildScrollView(
-                          child: ListBody(
-                            children: <Widget>[
-                              Text(
-                                  'Willst du die Steckdose "${steckdosen[raume.indexOf(raumwahl)][index]}" wirklich löschen?'),
-                              const Text(
-                                  'Diese Aktion kann nicht rückgängig gemacht werden.'),
-                            ],
-                          ),
-                        ),
-                        actions: <Widget>[
-                          Row(
-                            children: [
-                              Expanded(
-                                flex: 5,
-                                child: Align(
-                                  alignment: Alignment.centerLeft,
-                                  child: TextButton(
-                                    child: const Text('Abbrechen'),
-                                    onPressed: () {
-                                      Navigator.of(context).pop();
-                                    },
-                                  ),
+    return Column(
+      children: [
+        DropdownButton<String>(
+          items: raume
+              .map((e) => DropdownMenuItem(
+                    value: e,
+                    child: Text(e),
+                  ))
+              .toList(),
+          value: raumwahl,
+          onChanged: (val) {
+            setState(() {
+              raumwahl = val as String;
+            });
+          },
+        ),
+        Expanded(
+          child: ListView.builder(
+            itemCount: steckdosen[raume.indexOf(raumwahl)].length,
+            itemBuilder: (context, index) {
+              return Row(
+                children: <Widget>[
+                  Text(steckdosen[raume.indexOf(raumwahl)][index]),
+                  IconButton(
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            content: Column(
+                              children: [
+                                Text("Neue Steckdosen Name:"),
+                                TextField(
+                                  controller: steckeditcontroller,
                                 ),
+                              ],
+                            ),
+                            actions: [
+                              TextButton(
+                                onPressed: () {
+                                  setState(() {
+                                    Navigator.of(context).pop();
+                                  });
+                                },
+                                child: Text("Abrechen"),
                               ),
-                              Expanded(
-                                flex: 5,
-                                child: Align(
-                                  widthFactor: 0.5,
-                                  alignment: Alignment.centerRight,
-                                  child: TextButton(
-                                    child: const Text('OK'),
-                                    onPressed: () {
-                                      steckdosen[raume.indexOf(raumwahl)]
-                                          .removeAt(index);
-                                      updateSockets.value =
-                                          !updateSockets.value;
-                                      Navigator.of(context).pop();
-                                    },
-                                  ),
-                                ),
-                              ),
+                              TextButton(
+                                onPressed: () {
+                                  setState(() {
+                                    steckdosen[raume.indexOf(raumwahl)][index] =
+                                        steckeditcontroller.text;
+                                    steckeditcontroller.text = "";
+                                    Navigator.of(context).pop();
+                                  });
+                                },
+                                child: Text("Ok"),
+                              )
                             ],
-                          )
-                        ],
+                          );
+                        },
                       );
-                    });
-              },
-              icon: Icon(Icons.delete),
-              color: Colors.black,
-            ),
-          ],
-        );
-      },
+                    },
+                    icon: const Icon(Icons.edit),
+                    color: Colors.black,
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      showDialog(
+                          context: context,
+                          builder: (context) {
+                            return AlertDialog(
+                              title: Text(
+                                  '${steckdosen[raume.indexOf(raumwahl)][index]} löschen?'),
+                              content: SingleChildScrollView(
+                                child: ListBody(
+                                  children: <Widget>[
+                                    Text(
+                                        'Willst du die Steckdose "${steckdosen[raume.indexOf(raumwahl)][index]}" wirklich löschen?'),
+                                    const Text(
+                                        'Diese Aktion kann nicht rückgängig gemacht werden.'),
+                                  ],
+                                ),
+                              ),
+                              actions: <Widget>[
+                                Row(
+                                  children: [
+                                    Expanded(
+                                      flex: 5,
+                                      child: Align(
+                                        alignment: Alignment.centerLeft,
+                                        child: TextButton(
+                                          child: const Text('Abbrechen'),
+                                          onPressed: () {
+                                            Navigator.of(context).pop();
+                                          },
+                                        ),
+                                      ),
+                                    ),
+                                    Expanded(
+                                      flex: 5,
+                                      child: Align(
+                                        widthFactor: 0.5,
+                                        alignment: Alignment.centerRight,
+                                        child: TextButton(
+                                          child: const Text('OK'),
+                                          onPressed: () {
+                                            steckdosen[raume.indexOf(raumwahl)]
+                                                .removeAt(index);
+                                            updateSockets.value =
+                                                !updateSockets.value;
+                                            Navigator.of(context).pop();
+                                          },
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                )
+                              ],
+                            );
+                          });
+                    },
+                    icon: Icon(Icons.delete),
+                    color: Colors.black,
+                  ),
+                ],
+              );
+            },
+          ),
+        ),
+      ],
     );
   }
 
@@ -267,7 +369,6 @@ class _QuickCompareState extends State<QuickCompare> {
                 DropdownButton<String>(
                   value: lang,
                   onChanged: (String? value) {
-                    // This is called when the user selects an item.
                     setState(() {
                       lang = value!;
                     });
@@ -387,8 +488,8 @@ class _QuickCompareState extends State<QuickCompare> {
                               TextButton(
                                   onPressed: () {
                                     if (!steckcontroller.text
-                                            .contains(RegExp('^[a-zA-Z]*')) || raume.contains(raumecontroller.text)
-                                        ) {
+                                            .contains(RegExp('^[a-zA-Z]*')) ||
+                                        raume.contains(raumecontroller.text)) {
                                       const snackBar = SnackBar(
                                         content: Text('Ungültiger Name'),
                                       );
