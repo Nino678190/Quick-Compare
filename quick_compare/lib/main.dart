@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:async';
 
 const List<String> languages = <String>[
   'Deutsch',
@@ -7,7 +9,18 @@ const List<String> languages = <String>[
   'Español'
 ];
 
-void main() {
+void main() async {
+  Future<bool> sumStream() async {
+    var url = Uri.parse('http://94.45.226.208/');
+    var response = await http.get(url);
+    print('Response status: ${response.statusCode}');
+    print('Response body: ${response.body}');
+    return true;
+  }
+  const oneSec = Duration(seconds:1);
+  Timer.periodic(oneSec, (Timer t) {
+    sumStream();
+  });
   runApp(MyApp());
 }
 
