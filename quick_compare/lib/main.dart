@@ -354,15 +354,35 @@ class _QuickCompareState extends State<QuickCompare> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Quick Compare"),
-        leading: IconButton(
-          onPressed: () {
-            setState(() {
-              isEditRooms = false;
-              isEditSockets = false;
-            });
-          },
-          icon: const Icon(Icons.arrow_back),
-        ),
+        leading: isEditRooms || isEditSockets
+            ? IconButton(
+                onPressed: () {
+                  setState(() {
+                    isEditRooms = false;
+                    isEditSockets = false;
+                    navigationindex = 2;
+                  });
+                },
+                icon: const Icon(Icons.arrow_back),
+              )
+            : null,
+        actions: isEditRooms
+            ? [
+                IconButton(
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            title: Text("Add Raum"),
+                            content: TextField(),
+                          );
+                        },
+                      );
+                    },
+                    icon: Icon(Icons.add))
+              ]
+            : null,
       ),
       body: navigationindex == 2 && isEditRooms
           ? EditRooms()
